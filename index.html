@@ -234,6 +234,65 @@ td.rec{background:var(--green)!important;color:#fff!important;border-radius:6px}
 .opsact{margin:12px 0 0;padding-left:18px;font-size:13.5px}.opsact li{margin:5px 0}
 .live{margin-top:12px;font-size:12.5px;color:var(--sub);background:#fff;border:1px dashed #b9c0ca;border-radius:12px;padding:12px 14px}.live b{display:block;color:var(--ink);margin-bottom:2px}
 @media(max-width:960px){.opsgrid{grid-template-columns:1fr}.opshead h2{font-size:21px}}
+/* 예보 판정 띠 (미사용) */
+.verdict{display:grid;grid-template-columns:200px 1fr 230px;gap:0;background:var(--asphalt);color:#fff;border-radius:14px;overflow:hidden}
+.verdict>div{padding:16px 18px}.verdict .vk{font-size:12px;color:#9aa3b2;font-weight:600;letter-spacing:.03em}
+.vd1 .vbig{font-family:var(--display);font-size:52px;line-height:1.05;margin:4px 0}.vd1 .vbig small{font-size:20px;margin-left:2px}
+.verdict.bad .vbig{color:#ff7a66}.verdict.mid .vbig{color:var(--amber)}.verdict.ok .vbig{color:#3ddc97}
+.verdict .vsub{font-size:12.5px;color:#c9d0db}
+.vd2{border-left:1px solid #2d333d;border-right:1px solid #2d333d}
+.tl{margin-top:6px}.tlab{position:relative;height:20px}.tlab span{position:absolute;transform:translateX(-50%);font-family:var(--mono);font-size:13px;font-weight:600;color:#ff7a66;white-space:nowrap}.tlbar{position:relative;height:16px;background:#2d333d;border-radius:8px}
+.tlbusy{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(-45deg,#e2412c 0 6px,#ff6b55 6px 12px);border-radius:8px}
+.tlend{position:absolute;top:-5px;bottom:-5px;width:3px;background:#fff;border-radius:2px}
+.tlpk{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;border:3px solid #e2412c}
+.tllab{position:relative;height:40px;margin-top:6px}.tllab span{position:absolute;transform:translateX(-50%);font-family:var(--mono);font-size:13px;font-weight:600;white-space:nowrap;text-align:center;color:#fff}
+.tllab span:first-child{transform:none}.tllab span em{display:block;font-style:normal;font-family:var(--body);font-size:11px;color:#9aa3b2;font-weight:400}
+.tllab .b{color:#ff7a66}.tllab .g{color:#3ddc97}
+.vd3{background:var(--green)}.vd3 .vk{color:#d6f5e6}.vd3 .vsub{color:#d6f5e6}
+.vd3.none{background:#2d333d}
+.exitsign{font-family:var(--display);font-size:34px;line-height:1.15;margin:6px 0 4px}.exitsign b{font-family:var(--body)}
+/* 전후 비교 */
+.ophead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}.ophead .vk{font-size:12px;font-weight:700;color:var(--sub);letter-spacing:.04em;margin-bottom:6px}
+.tgt{font-size:13px;color:var(--sub)}
+.ba{display:grid;grid-template-columns:1fr 120px 1fr 1fr;gap:10px;align-items:stretch;margin-top:6px}
+.bb{border-radius:12px;padding:14px 16px}.bb .vk{font-size:12px;font-weight:700;letter-spacing:.03em}
+.bnum{font-family:var(--display);font-size:44px;line-height:1.1;margin:4px 0 2px;font-variant-numeric:tabular-nums}.bnum small{font-size:18px;margin-left:2px}
+.bsub{font-size:12.5px}
+.before{background:#fde8e4;color:#7a1f12}.before .bnum{color:var(--red)}
+.after{background:#e1f4ea;color:#0a4f32}.after .bnum{color:var(--green)}
+.net{background:var(--green);color:#fff}.net .vk,.net .bsub{color:#d6f5e6}
+.barrow{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-size:12px;font-weight:700;color:var(--green);line-height:1.35}.barrow b{font-size:30px;line-height:1}
+.cand{margin-top:16px}.cand .vk{font-size:12px;color:var(--sub);margin-bottom:6px}
+.cand i{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:-1px;margin:0 2px}.cand i.c1,.cbar .s1{background:var(--asphalt)}.cand i.c2,.cbar .s2{background:#f1998b}
+.crow{display:grid;grid-template-columns:230px 1fr 110px;gap:10px;align-items:center;padding:6px 8px;border-radius:8px;font-size:13.5px}
+.crow.win{background:#e1f4ea;font-weight:700}.crow.base{color:var(--sub)}
+.cbar{display:flex;height:14px;background:#f1f2f4;border-radius:4px;overflow:hidden}.cbar span{display:block;height:100%}
+.crow.base .cbar .s2{background:var(--red)}
+.cv{text-align:right;font-variant-numeric:tabular-nums;font-size:12.5px}
+/* 운영자 할 일 타임라인 */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:6px 0 14px;position:relative}
+.st{position:relative;padding:28px 14px 4px 0}
+.st::before{content:"";position:absolute;left:0;right:0;top:9px;height:4px;background:#dfe2e7}
+.st::after{content:"";position:absolute;left:0;top:2px;width:18px;height:18px;border-radius:50%;background:#fff;border:4px solid var(--asphalt)}
+.st.hot::after{border-color:var(--red);background:var(--red)}
+.st:last-child::after{border-color:var(--green)}
+.sw{font-family:var(--mono);font-weight:600;font-size:16px}.st.hot .sw{color:var(--red)}
+.stt{font-size:12px;font-weight:700;color:var(--sub);letter-spacing:.04em;margin-bottom:4px}
+.sd{font-size:13.5px;line-height:1.5}
+.warn{background:#fff6dc;border:1px solid #f0d58a;border-radius:10px;padding:10px 14px;font-size:13.5px;margin-bottom:12px}
+/* 히트맵 */
+.hm{overflow-x:auto}
+.hmr{display:grid;grid-template-columns:78px repeat(var(--n,20),minmax(22px,1fr));gap:3px;align-items:center;margin-bottom:3px}
+.hmn{font-size:13px;font-weight:700;white-space:nowrap}.hmn i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}
+.hx{font-family:var(--mono);font-size:11px;color:var(--sub);white-space:nowrap;overflow:visible}
+.hmb{border-radius:10px;padding:8px 8px 5px;margin-top:8px}.hmb.now{background:#fbf3f1}.hmb.opt{background:#f0f8f4}
+.hmt{font-size:12.5px;font-weight:700;margin:0 0 6px 2px}.hmb.now .hmt{color:var(--red)}.hmb.opt .hmt{color:var(--green)}
+.hc{height:30px;border-radius:5px;display:grid;place-items:center;font-family:var(--mono);font-size:12px;font-weight:600;color:#fff}
+.hc.z{background:#e7eaee}.hc.g{background:#9fd8bd}.hc.y{background:#f5b301;color:#3d2c00}.hc.r{background:#e2412c}
+.hc.rc{box-shadow:inset 0 0 0 3px var(--green)}.hc.z.rc,.hc.g.rc{color:var(--green);font-size:14px}
+.hml{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--sub);margin-top:10px}.hml i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:4px}
+.hml i.z{background:#e7eaee}.hml i.g{background:#9fd8bd}.hml i.y{background:#f5b301}.hml i.r{background:#e2412c}.hml i.rcx{background:#fff;box-shadow:inset 0 0 0 3px var(--green)}
+@media(max-width:960px){.verdict{grid-template-columns:1fr}.vd2{border:0;border-top:1px solid #2d333d;border-bottom:1px solid #2d333d}.ba{grid-template-columns:1fr 1fr}.barrow{grid-column:1/-1;flex-direction:row;gap:8px}.steps{grid-template-columns:1fr 1fr}.crow{grid-template-columns:1fr 90px}.crow .cbar{grid-column:1/-1;grid-row:2}}
 footer{font-size:12px;color:var(--sub);text-align:center;padding:24px;border-top:1px solid var(--line)}
 @media(max-width:960px){
   .hero{grid-template-columns:1fr;padding:22px}.hero h1{font-size:32px}
@@ -764,6 +823,7 @@ function renderFcList() {
   $('#fclist').innerHTML = html;
   $('#fclist').querySelectorAll('.fcard').forEach(b => b.onclick = () => { selFc = +b.dataset.i; renderForecast(); });
 }
+function endsU0(f) { return [...new Set(f.shows.map(s => toMin(s.en)))]; }
 function renderForecast() {
   if (selFc === null) { const today = new Date(); today.setHours(0, 0, 0, 0); let best = -1, bw = -1;
     FC.forEach((f, i) => { if (new Date(f.date + 'T00:00:00') >= today && f.mid.maxWait > bw) { bw = f.mid.maxWait; best = i; } }); selFc = best < 0 ? 0 : best; }
@@ -791,13 +851,14 @@ function renderForecast() {
   const venuesTxt = [...new Set(f.shows.map(s => SHORT[s.v]))].join('·');
   const P = f.an[E.rep], OP = optFor(f.date + fcMode, P, optTarget), bo = OP.best.o, parts = planParts(bo);
   const N = Math.round(P.Nk[0] + P.Nk[1] + P.Nk[2]);
-  $('#fcopt').innerHTML = `<h3><span>모델이 고른 최적 대처</span><label style="font-size:13px;font-weight:400">목표 최대 대기 <select id="tgt">${[2, 3, 5].map(v => `<option value="${v}" ${v === optTarget ? 'selected' : ''}>${v}분 이하</option>`).join('')}</select></label></h3>
-    <div class="chips">${parts.length ? parts.map(x => `<span class="chip">${x}</span>`).join('') : '<span class="chip none">평소 운영 유지 (추가 조치 불필요)</span>'}</div>
-    <div class="ores">
-      <div><div class="k">출구 최대 대기</div><div class="v">${f1(OP.base.maxWait)} → ${f1(OP.best.maxWait)}분</div></div>
-      <div><div class="k">하루 운영비 (가정)</div><div class="v">${Math.round(OP.best.cost / 1e4)}만 원</div></div>
-      <div><div class="k">시간 손실</div><div class="v">${Math.round(OP.base.loss / 1e4)} → ${Math.round(OP.best.loss / 1e4)}만 원</div></div>
-      <div><div class="k">하루 순편익</div><div class="v" style="color:${OP.base.loss - OP.best.total >= 0 ? 'var(--ok)' : 'var(--bad)'}">${Math.round((OP.base.loss - OP.best.total) / 1e4)}만 원</div></div>
+  const net = OP.base.loss - OP.best.total, maxTot = Math.max(...OP.top.map(x => x.total), OP.base.total, 1);
+  $('#fcopt').innerHTML = `<div class="ophead"><div><div class="vk">모델이 고른 최적 대처</div><div class="chips">${parts.length ? parts.map(x => `<span class="chip">${x}</span>`).join('') : '<span class="chip none">평소 운영 유지</span>'}</div></div>
+      <label class="tgt">목표 최대 대기 <select id="tgt">${[2, 3, 5].map(v => `<option value="${v}" ${v === optTarget ? 'selected' : ''}>${v}분 이하</option>`).join('')}</select></label></div>
+    <div class="ba">
+      <div class="bb before"><div class="vk">지금처럼 운영하면</div><div class="bnum">${f1(OP.base.maxWait)}<small>분</small></div><div class="bsub">출구 최대 대기 · 시간 손실 ${Math.round(OP.base.loss / 1e4)}만 원</div></div>
+      <div class="barrow"><span>${parts.length ? parts.join('<br>') : '조치 없음'}</span><b>→</b></div>
+      <div class="bb after"><div class="vk">최적 대처를 하면</div><div class="bnum">${f1(OP.best.maxWait)}<small>분</small></div><div class="bsub">출구 최대 대기 · 시간 손실 ${Math.round(OP.best.loss / 1e4)}만 원</div></div>
+      <div class="bb net"><div class="vk">하루 순편익</div><div class="bnum">${net >= 0 ? '+' : ''}${Math.round(net / 1e4)}<small>만 원</small></div><div class="bsub">운영비 ${Math.round(OP.best.cost / 1e4)}만 원을 빼고도 남는 이득</div></div>
     </div>
     <table class="cands"><thead><tr><th>후보 (총비용 순)</th><th>최대 대기</th><th>운영비</th><th>시간 손실</th></tr></thead><tbody>
       ${OP.top.map((x, i) => `<tr><td>${i === 0 ? '✅ ' : ''}${planParts(x.o).join(' + ') || '평소 운영'}</td><td>${f1(x.maxWait)}분</td><td>${Math.round(x.cost / 1e4)}만</td><td>${Math.round(x.loss / 1e4)}만</td></tr>`).join('')}
@@ -805,17 +866,22 @@ function renderForecast() {
     <div class="note">${OP.n}가지 조합을 모두 시뮬레이션해서 ${OP.feasible ? `“최대 대기 ${optTarget}분 이하”를 지키면서 운영비 + 시간 손실이 가장 작은 조합` : `목표를 지키는 조합이 없어 대기가 가장 짧은 조합`}을 골랐어요. <a href="#sim" id="opt2sim">시뮬레이터에서 자세히 보기 →</a></div>`;
   $('#tgt').onchange = e => { optTarget = +e.target.value; renderForecast(); };
   $('#opt2sim').onclick = () => { simSel = 'f' + selFc; pendingPlan = bo; };
-  let acts = [];
-  if (parts.length) acts.push(`D-3: 예매자 문자·SNS로 혼잡 예보와 아래 안내 문구 발송`);
-  if (bo.capShare) acts.push(`당일: 전광판·안내요원으로 출구별 처리 능력에 맞춰 분산 안내 (혼잡 시간대 ${recDoor !== null ? DOORS[recDoor] : '여유 출구'} 유도)`);
-  if (bo.fee) acts.push(`주차 정책: <b>${FEE[bo.fee].label}</b> → 공연 차량 약 ${Math.round(N * bo.shift)}대(${pct(bo.shift)}% 가정)가 30분 늦게 출발, 주차 수입 감소 약 ${Math.round(FEE[bo.fee].benefit * N * bo.shift / 1e4)}만 원`);
-  if (bo.speed) acts.push(`사전정산 안내·정산 인력 보강으로 출구 처리 속도 +${pct(bo.speed)}%`);
-  if (bo.lane >= 0) acts.push(`${DOORS[bo.lane]} 임시 차선 1개 추가 운영 (혼잡 시작 전 설치)`);
-  if (!parts.length) acts.push('평소대로 운영해도 목표 대기 이내예요. 주차 안내 문자로 혼잡 정보만 공유');
-  if (gap !== null && gap <= 20) acts.push(`공연장 간 예정 종료시각 차이가 ${gap}분뿐이에요 → 공연사와 종료시각 엇갈림(30분 이상) 협의 권장`);
+  const prep = [];
+  if (bo.capShare) prep.push(`안내요원·전광판 배치 (${DOORS[worst]} → ${recDoor !== null ? DOORS[recDoor] : '여유 출구'} 유도)`);
+  if (bo.lane >= 0) prep.push(`${DOORS[bo.lane]} 임시 차선 설치`);
+  if (bo.speed) prep.push(`사전정산 안내·정산 인력 보강 (처리 +${pct(bo.speed)}%)`);
+  if (bo.fee) prep.push(`${FEE[bo.fee].label} 공지 → 약 ${Math.round(N * bo.shift)}대 30분 늦게 출발 (수입 감소 약 ${Math.round(FEE[bo.fee].benefit * N * bo.shift / 1e4)}만 원)`);
+  const steps = [
+    { w: 'D-3', t: '사전 공지', d: parts.length ? '예매자 문자·SNS로 혼잡 예보와 아래 안내 문구 발송' : '주차 안내 문자로 혼잡 정보만 공유' },
+    { w: fmtT(e0 - 60), t: '현장 준비', d: prep.length ? prep.join('<br>') : '평소 운영 (추가 조치 불필요)' },
+    { w: busy.length ? fmtT(busy[0]) : fmtT(pk), t: busy.length ? '혼잡 시작' : '퇴장 정점', d: recDoor !== null ? `${DOORS[recDoor]} 유도 집중 · ${DOORS[worst]} 대기 최대 ${f1(E.maxWait)}분 예상` : '출구 상황 모니터링' , hot: busy.length > 0 },
+    { w: clear !== null && pv >= 1 ? fmtT(clear) : '-', t: '해소', d: '모든 출구 대기 1분 미만 · 평소 운영 복귀' },
+  ];
+  const warn = gap !== null && gap <= 20 ? `<div class="warn">공연장 간 예정 종료시각 차이가 <b>${gap}분</b>뿐이에요 → 공연사와 종료시각을 30분 이상 엇갈리게 협의하면 몰림 자체가 줄어요.</div>` : '';
   const msg = E.maxWait >= 1 ? `[올림픽공원 주차 안내] ${dateLabel(f.date)} ${venuesTxt} 공연 후 ${busy.length ? fmtT(busy[0]) + '~' + fmtT(busy[busy.length - 1] + 1) : fmtT(pk) + ' 전후'}에 출구 혼잡이 예상됩니다. ${recDoor !== null ? `이 시간에는 ${DOORS[recDoor]} 이용을 권장하며, ` : ''}${clear !== null ? fmtT(clear) + ' 이후' : '조금 늦게'} 출차하시면 대기가 거의 없습니다.${bo.fee ? (bo.fee === 1 ? ' 이날은 공연 종료 후 30분간 주차요금이 추가되지 않으니 여유 있게 출차하세요.' : ` 이날은 공연 종료 30분 이후 출차 시 주차요금 ${(FEE[bo.fee].benefit - 1800).toLocaleString()}원 추가 할인과 30분 요금 동결 혜택이 있습니다.`) : ''}`
     : `[올림픽공원 주차 안내] ${dateLabel(f.date)} ${venuesTxt} 공연 후 출구 혼잡은 크지 않을 것으로 예상됩니다. 안전 운전하세요.`;
-  $('#fcact').innerHTML = `<h3>이 날 운영자 할 일 <span class="badge ${cls}">${lab}</span></h3><ul>${acts.map(a => `<li>${a}</li>`).join('')}</ul>
+  $('#fcact').innerHTML = `<h3>이 날 운영자 할 일 <span class="badge ${cls}">${lab}</span></h3>
+    <div class="steps">${steps.map(s => `<div class="st ${s.hot ? 'hot' : ''}"><div class="sw">${s.w}</div><div class="stt">${s.t}</div><div class="sd">${s.d}</div></div>`).join('')}</div>${warn}
     <div class="msg"><div class="ml">관람객 안내 문구 (문자·전광판용)</div><span id="msgtxt">${msg}</span><button id="copymsg">복사</button></div>`;
   $('#copymsg').onclick = async () => { try { await navigator.clipboard.writeText(msg); $('#copymsg').textContent = '복사됨'; } catch (e) { $('#copymsg').textContent = '직접 선택해 복사하세요'; } };
   const t0 = Math.max(e0 - 20, 0), t1 = Math.min(Math.max(...ends) + 150, T - 1);
@@ -948,7 +1014,7 @@ function renderOps(prepare) {
     <path d="M140,95 C260,40 470,55 505,110 C560,190 545,330 520,430 C500,520 420,545 330,540 C220,535 140,470 120,380 C100,280 90,160 140,95z" fill="#cfe5d3"/>
     <path d="M505,110 C600,120 760,150 840,230" fill="none" stroke="#c7dcef" stroke-width="22" stroke-linecap="round"/>
     <text x="300" y="14" class="road" text-anchor="middle">올림픽대교 방향</text><text x="480" y="654" class="road" text-anchor="middle">위례성대로</text>
-    <text x="950" y="330" class="road" text-anchor="middle" transform="rotate(90 950 330)">길동 · 가락동 방향</text><text x="10" y="330" class="road" text-anchor="middle" transform="rotate(-90 10 330)">올림픽로 · 잠실 방향</text>`;
+    <text x="950" y="170" class="road" text-anchor="middle" transform="rotate(90 950 170)">길동 · 가락동 방향</text><text x="10" y="330" class="road" text-anchor="middle" transform="rotate(-90 10 330)">올림픽로 · 잠실 방향</text>`;
   ROUTE.forEach(d => g += `<path d="${d}" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>`);
   CTX.forEach(([n, x, y]) => g += `<text x="${x}" y="${y}" class="ctx" text-anchor="middle">${n}</text>`);
   // 공연장
