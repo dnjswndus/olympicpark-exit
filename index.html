@@ -79,6 +79,14 @@ td.rec{outline:2px solid var(--navy);outline-offset:-3px;border-radius:6px}
 .msg{background:#f5f7fa;border:1px dashed #b8c4d6;border-radius:10px;padding:12px;font-size:13.5px;position:relative}.msg button{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:#fff;border-radius:7px;padding:4px 10px;font:inherit;font-size:12px;cursor:pointer}
 .msg .ml{font-size:12px;color:var(--sub);font-weight:700;margin-bottom:4px}
 @media(max-width:900px){.cause{grid-template-columns:1fr}.arrow{text-align:center;transform:rotate(90deg)}.ovgrid,.who{grid-template-columns:1fr}.hero h2{font-size:20px}.brow{grid-template-columns:120px 1fr 44px}}
+.opt{margin-top:16px;border-left:4px solid var(--red)}.opt h3{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.opt select{padding:5px 8px;border-radius:7px;border:1px solid var(--line);font:inherit;font-size:13px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 12px}.chip{background:#fdebe7;color:var(--red);font-weight:700;border-radius:99px;padding:5px 12px;font-size:14px}.chip.none{background:#e3f5ee;color:var(--ok)}
+.ores{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.ores div{background:#f7f9fb;border-radius:10px;padding:10px 12px}.ores .k{font-size:12px;color:var(--sub)}.ores .v{font-size:18px;font-weight:900}
+.cands{margin-top:12px}.cands td:first-child{font-weight:500}
+.optbtn{width:100%;margin-top:14px;background:var(--red);color:#fff;border:0;border-radius:10px;padding:11px;font:inherit;font-weight:700;font-size:13.5px;cursor:pointer}
+.optsum{margin-top:16px;background:#fff8f6;border:1px solid #f5cfc6;border-radius:12px;padding:16px}.optsum .oh{font-weight:900;font-size:16px;margin-bottom:4px}.optsum p{margin:4px 0 10px;font-size:14px}.optsum tr.hl td{background:#fdebe7}
+@media(max-width:900px){.ores{grid-template-columns:1fr 1fr}}
 footer{font-size:12px;color:var(--sub);text-align:center;padding:20px}
 @media(max-width:900px){main{padding:14px}header{padding:16px 14px 0}nav a{padding:8px 10px;font-size:13px;white-space:nowrap}nav{overflow-x:auto}.lot{margin-left:0}#fctable,#simdoor{overflow-x:auto}td,th{padding:6px}.grid2{grid-template-columns:1fr}#fclist{max-height:260px}.kpis,.kpis5,.stat,.flow{grid-template-columns:1fr 1fr}header h1{font-size:21px}}
 </style>
@@ -87,7 +95,7 @@ footer{font-size:12px;color:var(--sub);text-align:center;padding:20px}
 <header><div class="wrap">
   <div class="eyebrow">2026 한국체육산업개발(주) 공공데이터 활용 경진대회</div>
   <h1>공연이 끝나면 갇힌다</h1>
-  <p>올림픽공원 주차장 출차 대란 — 실측 진단, 대기행렬 시뮬레이션, 다가오는 공연 예보</p>
+  <p>올림픽공원 주차장 출차 대란 — 실측 진단 · 대기행렬 예보 · 날짜별 최적 대처 추천</p>
   <nav><a href="#overview">대란과 처방</a><a href="#forecast">다가오는 공연 출차 예보</a><a href="#sim">운영 시뮬레이터</a><a href="#about">분석 근거</a></nav>
 </div></header>
 <main><div class="wrap">
@@ -128,7 +136,17 @@ footer{font-size:12px;color:var(--sub);text-align:center;padding:20px}
       <div id="ovbars"></div>
       <div><div class="chart" id="ovchart2"></div></div>
     </div>
-    <p class="note">돈이 거의 들지 않는 <b>안내</b>(시간 분산 20% + 출구 분산)만으로 대기가 69% 줄고, 연간 손실이 1.34억 원에서 0.41억 원으로 줄어요(연 약 0.9억 원 절감).</p>
+    <p class="note">돈이 거의 들지 않는 <b>안내</b>(시간 분산 20% + 출구 분산)만으로 대기가 69% 줄어요.</p>
+    <div class="optsum">
+      <div class="oh">🧮 더 나아가: 날짜마다 최적 대처를 모델이 고르면</div>
+      <p>날짜마다 방안 조합 160가지를 모두 시뮬레이션해서 <b>“출구 대기 3분 이하”를 지키면서 운영비 + 시간 손실이 가장 작은 조합</b>을 골라요. 2025년 74일에 적용한 결과예요.</p>
+      <table><thead><tr><th>운영 방식</th><th>시간 손실 + 운영비 (74일)</th><th>대기 3분 이내인 날</th></tr></thead><tbody>
+        <tr><td>현재</td><td>7,364만 원</td><td>41일</td></tr>
+        <tr><td>매일 같은 조합 (시간 20% + 출구 분산)</td><td>7,122만 원</td><td>66일</td></tr>
+        <tr class="hl"><td><b>날짜별 최적 대처 (이 서비스)</b></td><td><b>1,997만 원 (−73%)</b></td><td><b>74일 전부</b></td></tr>
+      </tbody></table>
+      <p class="note">37일은 추가 조치 없이도 목표를 지켜서 “평소 운영”을 추천해요. 위험한 날에만 비용을 써서, 같은 돈으로 더 큰 효과를 내요.</p>
+    </div>
   </div>
 
   <div class="panel ov">
@@ -160,6 +178,7 @@ footer{font-size:12px;color:var(--sub);text-align:center;padding:20px}
       <div class="row" style="margin-top:16px"><div style="font-weight:700">예보 기준</div>
         <div class="toggle"><button data-mode="mid" class="on">보통 날</button><button data-mode="hi">혼잡한 날 (상위 25%)</button></div></div>
       <div class="kpis" id="fckpi"></div>
+      <div class="panel opt" id="fcopt"></div>
       <div class="panel act" id="fcact"></div>
       <div class="panel" style="margin-top:16px"><h3>언제 나가면 얼마나 기다릴까?</h3><div class="chart" id="fcchart"></div></div>
       <div class="panel" style="margin-top:16px"><h3>10분 단위 출구별 예상 대기 <span class="hint" style="font-weight:400;color:var(--sub);font-size:12px">· 테두리 = 그 시간대 추천 출구</span></h3><div id="fctable"></div>
@@ -174,6 +193,7 @@ footer{font-size:12px;color:var(--sub);text-align:center;padding:20px}
     <div class="panel ctl">
       <h3>시나리오 설정</h3>
       <label>날짜</label><select id="simday"></select>
+      <button id="optbtn" class="optbtn">🧮 이 날 모델 추천안 적용 (대기 3분 이하 · 최소 비용)</button><div class="note" id="optnote" style="margin-top:6px"></div>
       <label>빠른 선택</label><div id="presets"></div>
       <label>시간 분산 <span id="shiftv"></span><div class="hint">공연 차량 중 늦게 출발하도록 유도하는 비율 (예: 공원 내 할인·이벤트)</div></label>
       <input type="range" id="shift" min="0" max="50" step="5" value="0">
@@ -225,12 +245,22 @@ footer{font-size:12px;color:var(--sub);text-align:center;padding:20px}
   </tbody></table>
   <p class="note">비용이 거의 들지 않는 안내(시간 분산 + 출구 분산)만으로 대기의 2/3 이상이 사라져요. 이 페이지의 예보와 추천 출구가 그 안내 수단이에요.</p>
 
+  <h2>날짜별 최적 대처 — 어떻게 고르나</h2>
+  <ul>
+    <li><b>후보:</b> 시간 분산 0~40%(10% 단위) × 출구 분산 유/무 × 정산 속도 +0~30%(10% 단위) × 임시 차선(없음/북2/동2/남2) = 160가지 조합</li>
+    <li><b>조건:</b> 출구 최대 대기 3분 이하 (못 지키면 대기가 가장 짧은 조합)</li>
+    <li><b>목표:</b> 운영비 + 시간 손실(대기 차량·시간 × 2.4만 원) 최소. 차이가 5만 원 이내면 더 단순한 방안을 우선해요</li>
+    <li><b>운영비 가정 (하루):</b> 출구 분산 안내 15만 원(안내요원·전광판), 임시 차선 30만 원, 정산 속도 +10%당 10만 원(사전정산 안내·인력), 시간 분산은 늦게 나가는 차량 1대당 3천 원(공원 내 혜택)</li>
+    <li><b>결과 (2025년 74일):</b> 시간 손실 + 운영비 7,364만 원 → 1,997만 원(−73%), 대기 3분 이내인 날 41일 → 74일</li>
+  </ul>
+
   <h2>한계와 가정</h2>
   <ul>
     <li>대기는 <b>출구 정산 게이트 앞</b>만 계산해요. 주차장 내부 이동·도로 정체는 빠져 있어 체감 대기(후기상 30~60분)보다 작게 나와요.</li>
     <li>2025년 8~12월 입출차 데이터는 API 장애로 일부만 수집돼 1~7월로 모델을 만들었어요.</li>
     <li>방안 수치는 가정이에요: 시간 분산 = 공연 차량의 20%·40%를 30분 늦춤, 차선 추가 = 처리 한계 ×1.5, 시간 가치 = 차량 1대·1시간 2.4만 원(1.6명 × 1.5만 원).</li>
     <li>2026 공연 중 러닝타임 미공개 공연은 2시간으로 가정했어요.</li>
+    <li>운영비 단가는 공개 자료가 없어 가정한 값이에요. 기관의 실제 단가를 넣으면 추천이 바뀔 수 있어요.</li>
   </ul>
 
   <h2>사용한 공공데이터</h2>
@@ -346,6 +376,33 @@ function analogs(fc) {
 function dayParams(d) { return [{ ends: d.ends, Nk: d.Nk, bg: d.bg, delay: d.delay, from: d.date }]; }
 
 if (typeof module !== 'undefined') module.exports = { runOne, ensemble, analogs, dayParams, autoLane, T, C0 };
+
+// ===== 최적화: 날짜별 최적 대처 조합 탐색 =====
+// 운영비 가정 (하루 기준, 원)
+const COST = { capShare: 150000, lane: 300000, speedPer10: 100000, shiftPerCar: 3000 };
+const GRID = { shift: [0, .1, .2, .3, .4], cap: [false, true], speed: [0, .1, .2, .3], lane: [-1, 0, 1, 2] };
+function planCost(p, o) {
+  const N = p.Nk[0] + p.Nk[1] + p.Nk[2];
+  return (o.capShare ? COST.capShare : 0) + (o.lane >= 0 ? COST.lane : 0) + COST.speedPer10 * Math.round((o.speed || 0) * 10) + (o.shift || 0) * N * COST.shiftPerCar;
+}
+// 목표: 출구 최대 대기 ≤ target분을 지키면서 (운영비 + 시간손실) 최소
+function optimize(p, target) {
+  const base = runOne(p, {}), res = [];
+  for (const shift of GRID.shift) for (const cap of GRID.cap) for (const speed of GRID.speed) for (const lane of GRID.lane) {
+    const o = { shift, shiftMin: 30, capShare: cap, speed, lane }, r = runOne(p, o);
+    const cost = planCost(p, o), loss = r.vehMin / 60 * VOT;
+    res.push({ o, maxWait: r.maxWait, vehMin: r.vehMin, cost, loss, total: cost + loss, ok: r.maxWait <= target + 1e-9 });
+  }
+  const feas = res.filter(x => x.ok);
+  const pool = feas.length ? feas : res;
+  pool.sort((a, b) => feas.length ? a.total - b.total : (a.maxWait - b.maxWait) || (a.total - b.total));
+  // 총비용 차이가 5만 원 이내면 운영비가 더 적은(단순한) 방안을 우선
+  if (feas.length) { const m = pool[0].total; const near = pool.filter(x => x.total <= m + 50000).sort((a, b) => a.cost - b.cost || a.total - b.total);
+    const rest = pool.filter(x => !near.includes(x)); pool.splice(0, pool.length, ...near, ...rest); }
+  const baseLoss = base.vehMin / 60 * VOT;
+  return { base: { maxWait: base.maxWait, vehMin: base.vehMin, loss: baseLoss, total: baseLoss, ok: base.maxWait <= target }, best: pool[0], top: pool.slice(0, 3), feasible: feas.length > 0, n: res.length };
+}
+if (typeof module !== 'undefined') Object.assign(module.exports, { optimize, planCost });
 </script>
 <script>// ===== 화면 =====
 const DCOL = ['#2f6fdf', '#e07b1a', '#16956b'];
@@ -400,14 +457,39 @@ const bin5 = arr => { const o = []; for (let k = 0; k * 5 < arr.length; k++) { l
 
 // ---------- 탭 ----------
 const TABS = ['overview', 'forecast', 'sim', 'about'];
-function showTab() {
-  const h = location.hash.slice(1); const tab = TABS.includes(h) ? h : 'overview';
+let curTab = TABS.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'overview';
+function showTab(tabArg) {
+  if (typeof tabArg === 'string' && TABS.includes(tabArg)) curTab = tabArg;
+  else { const h = location.hash.slice(1); if (TABS.includes(h)) curTab = h; }
+  const tab = curTab;
   TABS.forEach(k => { $('#tab-' + k).hidden = k !== tab; document.querySelector(`nav a[href="#${k}"]`).classList.toggle('on', k === tab); });
   if (tab === 'overview') renderOverview(); if (tab === 'forecast') renderForecast(); if (tab === 'sim') renderSim();
-  window.scrollTo(0, 0);
 }
-window.addEventListener('hashchange', showTab);
+// 탭 이동은 스크립트로 직접 처리 (일부 뷰어에서 #링크 이동이 막히는 경우 대비)
+document.addEventListener('click', ev => {
+  const a = ev.target.closest('a[href^="#"]'); if (!a) return;
+  const k = a.getAttribute('href').slice(1); if (!TABS.includes(k)) return;
+  ev.preventDefault();
+  try { history.replaceState(null, '', '#' + k); } catch (e) {}
+  showTab(k); try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
+});
+window.addEventListener('hashchange', () => showTab());
 
+
+
+// ---------- 최적안 설명 ----------
+const pct = v => Math.round(v * 100);
+function planParts(o) {
+  const a = [];
+  if (o.shift) a.push(`시간 분산 ${pct(o.shift)}%`);
+  if (o.capShare) a.push('출구 분산');
+  if (o.speed) a.push(`정산 속도 +${pct(o.speed)}%`);
+  if (o.lane >= 0) a.push(`${DOORS[o.lane]} 임시 차선`);
+  return a;
+}
+const OPTCACHE = {};
+function optFor(key, p, target) { const k = key + '|' + target; if (!OPTCACHE[k]) OPTCACHE[k] = optimize(p, target); return OPTCACHE[k]; }
+let optTarget = 3;
 
 // ---------- ⓪ 대란과 처방 (한눈에 보기) ----------
 function renderOverview() {
@@ -471,17 +553,33 @@ function renderForecast() {
   const endsU = [...new Set(f.shows.map(s => s.en))].map(toMin).sort((a, b) => a - b);
   const gap = endsU.length > 1 ? Math.min(...endsU.slice(1).map((v, i) => v - endsU[i])) : null;
   const venuesTxt = [...new Set(f.shows.map(s => SHORT[s.v]))].join('·');
+  const P = f.an[E.rep], OP = optFor(f.date + fcMode, P, optTarget), bo = OP.best.o, parts = planParts(bo);
+  const N = Math.round(P.Nk[0] + P.Nk[1] + P.Nk[2]);
+  $('#fcopt').innerHTML = `<h3><span>🧮 모델이 고른 최적 대처</span><label style="font-size:13px;font-weight:400">목표 최대 대기 <select id="tgt">${[2, 3, 5].map(v => `<option value="${v}" ${v === optTarget ? 'selected' : ''}>${v}분 이하</option>`).join('')}</select></label></h3>
+    <div class="chips">${parts.length ? parts.map(x => `<span class="chip">${x}</span>`).join('') : '<span class="chip none">평소 운영 유지 (추가 조치 불필요)</span>'}</div>
+    <div class="ores">
+      <div><div class="k">출구 최대 대기</div><div class="v">${f1(OP.base.maxWait)} → ${f1(OP.best.maxWait)}분</div></div>
+      <div><div class="k">하루 운영비 (가정)</div><div class="v">${Math.round(OP.best.cost / 1e4)}만 원</div></div>
+      <div><div class="k">시간 손실</div><div class="v">${Math.round(OP.base.loss / 1e4)} → ${Math.round(OP.best.loss / 1e4)}만 원</div></div>
+      <div><div class="k">하루 순편익</div><div class="v" style="color:${OP.base.loss - OP.best.total >= 0 ? 'var(--ok)' : 'var(--bad)'}">${Math.round((OP.base.loss - OP.best.total) / 1e4)}만 원</div></div>
+    </div>
+    <table class="cands"><thead><tr><th>후보 (총비용 순)</th><th>최대 대기</th><th>운영비</th><th>시간 손실</th></tr></thead><tbody>
+      ${OP.top.map((x, i) => `<tr><td>${i === 0 ? '✅ ' : ''}${planParts(x.o).join(' + ') || '평소 운영'}</td><td>${f1(x.maxWait)}분</td><td>${Math.round(x.cost / 1e4)}만</td><td>${Math.round(x.loss / 1e4)}만</td></tr>`).join('')}
+    </tbody></table>
+    <div class="note">${OP.n}가지 조합을 모두 시뮬레이션해서 ${OP.feasible ? `“최대 대기 ${optTarget}분 이하”를 지키면서 운영비 + 시간 손실이 가장 작은 조합` : `목표를 지키는 조합이 없어 대기가 가장 짧은 조합`}을 골랐어요. <a href="#sim" id="opt2sim">시뮬레이터에서 자세히 보기 →</a></div>`;
+  $('#tgt').onchange = e => { optTarget = +e.target.value; renderForecast(); };
+  $('#opt2sim').onclick = () => { simSel = 'f' + selFc; pendingPlan = bo; };
   let acts = [];
-  if (E.maxWait >= 4) acts = [`D-3: 예매자 문자·SNS로 혼잡 예보 발송 (혼잡 ${busy.length ? fmtT(busy[0]) + '~' + fmtT(busy[busy.length - 1] + 1) : ''})`,
-    `당일: ${DOORS[worst]}에 안내요원 배치, 전광판으로 ${recDoor !== null ? DOORS[recDoor] : '여유 출구'} 이용 유도`,
-    `혼잡 시작 30분 전부터 사전정산 안내, ${DOORS[worst]} 임시 차선 투입 검토`,
-    '공원 내 식음·굿즈 혜택으로 30분 늦은 출발 유도 (시간 분산)'];
-  else if (E.maxWait >= 1) acts = [`전광판·주차 안내 문자로 ${recDoor !== null ? DOORS[recDoor] : '여유 출구'} 이용 안내`, `${DOORS[worst]} 앞 짧은 대기 대비 (정점 ${fmtT(pk)}쯤)`];
-  else acts = ['평소대로 운영해도 출구 대기가 거의 없을 것으로 예상돼요'];
+  if (parts.length) acts.push(`D-3: 예매자 문자·SNS로 혼잡 예보와 아래 안내 문구 발송`);
+  if (bo.capShare) acts.push(`당일: 전광판·안내요원으로 출구별 처리 능력에 맞춰 분산 안내 (혼잡 시간대 ${recDoor !== null ? DOORS[recDoor] : '여유 출구'} 유도)`);
+  if (bo.shift) acts.push(`공원 내 식음·굿즈 혜택으로 공연 차량의 ${pct(bo.shift)}%(약 ${Math.round(N * bo.shift)}대)가 30분 늦게 출발하도록 유도`);
+  if (bo.speed) acts.push(`사전정산 안내·정산 인력 보강으로 출구 처리 속도 +${pct(bo.speed)}%`);
+  if (bo.lane >= 0) acts.push(`${DOORS[bo.lane]} 임시 차선 1개 추가 운영 (혼잡 시작 전 설치)`);
+  if (!parts.length) acts.push('평소대로 운영해도 목표 대기 이내예요. 주차 안내 문자로 혼잡 정보만 공유');
   if (gap !== null && gap <= 20) acts.push(`공연장 간 예정 종료시각 차이가 ${gap}분뿐이에요 → 공연사와 종료시각 엇갈림(30분 이상) 협의 권장`);
   const msg = E.maxWait >= 1 ? `[올림픽공원 주차 안내] ${dateLabel(f.date)} ${venuesTxt} 공연 후 ${busy.length ? fmtT(busy[0]) + '~' + fmtT(busy[busy.length - 1] + 1) : fmtT(pk) + ' 전후'}에 출구 혼잡이 예상됩니다. ${recDoor !== null ? `이 시간에는 ${DOORS[recDoor]} 이용을 권장하며, ` : ''}${clear !== null ? fmtT(clear) + ' 이후' : '조금 늦게'} 출차하시면 대기가 거의 없습니다.`
     : `[올림픽공원 주차 안내] ${dateLabel(f.date)} ${venuesTxt} 공연 후 출구 혼잡은 크지 않을 것으로 예상됩니다. 안전 운전하세요.`;
-  $('#fcact').innerHTML = `<h3>🏟️ 운영 대처 권고 <span class="badge ${cls}">${lab}</span></h3><ul>${acts.map(a => `<li>${a}</li>`).join('')}</ul>
+  $('#fcact').innerHTML = `<h3>🏟️ 이 날 운영자 할 일 <span class="badge ${cls}">${lab}</span></h3><ul>${acts.map(a => `<li>${a}</li>`).join('')}</ul>
     <div class="msg"><div class="ml">관람객 안내 문구 (문자·전광판용)</div><span id="msgtxt">${msg}</span><button id="copymsg">복사</button></div>`;
   $('#copymsg').onclick = async () => { try { await navigator.clipboard.writeText(msg); $('#copymsg').textContent = '복사됨'; } catch (e) { $('#copymsg').textContent = '직접 선택해 복사하세요'; } };
   const t0 = Math.max(e0 - 20, 0), t1 = Math.min(Math.max(...ends) + 150, T - 1);
@@ -504,7 +602,7 @@ document.addEventListener('click', ev => { const b = ev.target.closest('[data-mo
   fcMode = b.dataset.mode; document.querySelectorAll('[data-mode]').forEach(x => x.classList.toggle('on', x === b)); renderForecast(); });
 
 // ---------- ② 운영 시뮬레이터 ----------
-let simSel = 'd' + DATA.days.findIndex(d => d.date === '2025-04-05');
+let simSel = 'd' + DATA.days.findIndex(d => d.date === '2025-04-05'), pendingPlan = null;
 const PRESETS = {
   '현재 그대로': { shift: 0, smin: 30, cap: false, speed: 0, lane: 'none' },
   '시간 분산 20%': { shift: 20, smin: 30, cap: false, speed: 0, lane: 'none' },
@@ -519,8 +617,12 @@ function buildSimControls() {
   $('#presets').innerHTML = Object.keys(PRESETS).map(k => `<button data-p="${k}">${k}</button>`).join('');
   $('#presets').querySelectorAll('button').forEach(b => b.onclick = () => { const p = PRESETS[b.dataset.p];
     $('#shift').value = p.shift; $('#smin').value = p.smin; $('#cap').checked = p.cap; $('#speed').value = p.speed; $('#lane').value = p.lane; renderSim(); });
+  $('#optbtn').onclick = () => { applyPlan(simOptimize().best.o); renderSim(); };
   ['#simday', '#shift', '#smin', '#cap', '#speed', '#lane'].forEach(s => $(s).addEventListener('input', () => { if (s === '#simday') simSel = $(s).value; renderSim(); }));
 }
+function simParams() { const isF = simSel[0] === 'f', idx = +simSel.slice(1); return isF ? [FC[idx].an[FC[idx].mid.rep], 'f' + idx] : [DATA.days[idx], 'd' + idx]; }
+function simOptimize() { const [p, k] = simParams(); return optFor(k + 'mid', p, 3); }
+function applyPlan(o) { $('#shift').value = pct(o.shift); $('#smin').value = 30; $('#cap').checked = !!o.capShare; $('#speed').value = pct(o.speed); $('#lane').value = o.lane >= 0 ? String(o.lane) : 'none'; }
 function simOpts() {
   const lane = $('#lane').value;
   return { shift: +$('#shift').value / 100, shiftMin: +$('#smin').value, capShare: $('#cap').checked, speed: +$('#speed').value / 100,
@@ -528,6 +630,8 @@ function simOpts() {
 }
 function renderSim() {
   $('#simday').value = simSel;
+  if (pendingPlan) { applyPlan(pendingPlan); pendingPlan = null; }
+  { const OP = simOptimize(), ps = planParts(OP.best.o); $('#optnote').innerHTML = `이 날 추천안: <b>${ps.join(' + ') || '평소 운영 유지'}</b> · 최대 대기 ${f1(OP.base.maxWait)} → ${f1(OP.best.maxWait)}분 · 운영비 ${Math.round(OP.best.cost / 1e4)}만 원`; }
   $('#shiftv').textContent = $('#shift').value + '%'; $('#sminv').textContent = $('#smin').value + '분'; $('#speedv').textContent = '+' + $('#speed').value + '%';
   const isF = simSel[0] === 'f', idx = +simSel.slice(1);
   const params = isF ? FC[idx].an : dayParams(DATA.days[idx]);
@@ -554,8 +658,9 @@ function renderSim() {
 
 // ---------- 시작 ----------
 buildSimControls();
+pendingPlan = simOptimize().best.o;   // 처음 열면 4/5 추천안 적용 상태
 showTab();
-window.addEventListener('resize', () => { clearTimeout(window._rz); window._rz = setTimeout(showTab, 150); });
+window.addEventListener('resize', () => { clearTimeout(window._rz); window._rz = setTimeout(() => showTab(curTab), 150); });
 </script>
 </body>
 </html>
