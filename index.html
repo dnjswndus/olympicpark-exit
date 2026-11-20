@@ -87,6 +87,7 @@ td.rec{outline:2px solid var(--navy);outline-offset:-3px;border-radius:6px}
 .optbtn{width:100%;margin-top:14px;background:var(--red);color:#fff;border:0;border-radius:10px;padding:11px;font:inherit;font-weight:700;font-size:13.5px;cursor:pointer}
 .optsum{margin-top:16px;background:#fff8f6;border:1px solid #f5cfc6;border-radius:12px;padding:16px}.optsum .oh{font-weight:900;font-size:16px;margin-bottom:4px}.optsum p{margin:4px 0 10px;font-size:14px}.optsum tr.hl td{background:#fdebe7}
 @media(max-width:900px){.ores{grid-template-columns:1fr 1fr}}
+.feebox{margin-top:12px;background:#fff6e0;border:1px solid #f1d9a0;border-radius:10px;padding:11px 14px;font-size:14px}
 footer{font-size:12px;color:var(--sub);text-align:center;padding:20px}
 @media(max-width:900px){main{padding:14px}header{padding:16px 14px 0}nav a{padding:8px 10px;font-size:13px;white-space:nowrap}nav{overflow-x:auto}.lot{margin-left:0}#fctable,#simdoor{overflow-x:auto}td,th{padding:6px}.grid2{grid-template-columns:1fr}#fclist{max-height:260px}.kpis,.kpis5,.stat,.flow{grid-template-columns:1fr 1fr}header h1{font-size:21px}}
 </style>
@@ -127,6 +128,7 @@ footer{font-size:12px;color:var(--sub);text-align:center;padding:20px}
       <div class="arrow">＝</div>
       <div class="cbox q"><div class="k">차이만큼 쌓이는 줄</div><div class="v" id="ovq"></div><div class="s">4/5 출구 앞 최대 대기 줄 (모델)</div></div>
     </div>
+    <div class="feebox"><b>💸 요금 구조도 몰림을 부추겨요.</b> 올림픽공원 주차요금은 소형 10분당 600원이에요. 줄을 피해 30분 기다리면 1,800원을 더 내야 하니, 모두가 종료 직후 동시에 나가려 해요. → 처방: <b>혼잡일에만 “종료 후 30분 요금 동결”</b></div>
     <p class="note">공연장 2~3곳이 같은 시간대에 끝나는 날이 가장 위험해요. 3곳 동시 종료일은 최대 대기 중앙값이 7.8분으로, 1곳일 때(1.8분)의 4배예요.</p>
   </div>
 
@@ -136,16 +138,16 @@ footer{font-size:12px;color:var(--sub);text-align:center;padding:20px}
       <div id="ovbars"></div>
       <div><div class="chart" id="ovchart2"></div></div>
     </div>
-    <p class="note">돈이 거의 들지 않는 <b>안내</b>(시간 분산 20% + 출구 분산)만으로 대기가 69% 줄어요.</p>
+    <p class="note"><b>늦은 출차 유도</b>(공연 차량 20%가 30분 늦게) + <b>출구 분산 안내</b>만으로 대기가 69% 줄어요.</p>
     <div class="optsum">
       <div class="oh">🧮 더 나아가: 날짜마다 최적 대처를 모델이 고르면</div>
       <p>날짜마다 방안 조합 160가지를 모두 시뮬레이션해서 <b>“출구 대기 3분 이하”를 지키면서 운영비 + 시간 손실이 가장 작은 조합</b>을 골라요. 2025년 74일에 적용한 결과예요.</p>
       <table><thead><tr><th>운영 방식</th><th>시간 손실 + 운영비 (74일)</th><th>대기 3분 이내인 날</th></tr></thead><tbody>
         <tr><td>현재</td><td>7,364만 원</td><td>41일</td></tr>
-        <tr><td>매일 같은 조합 (시간 20% + 출구 분산)</td><td>7,122만 원</td><td>66일</td></tr>
-        <tr class="hl"><td><b>날짜별 최적 대처 (이 서비스)</b></td><td><b>1,997만 원 (−73%)</b></td><td><b>74일 전부</b></td></tr>
+        <tr><td>매일 같은 조합 (주차비 동결+2천 원 + 출구 분산)</td><td>8,128만 원 <span style="color:var(--bad)">(오히려 증가)</span></td><td>66일</td></tr>
+        <tr class="hl"><td><b>날짜별 최적 대처 (이 서비스)</b></td><td><b>2,177만 원 (−70%)</b></td><td><b>74일 전부</b></td></tr>
       </tbody></table>
-      <p class="note">37일은 추가 조치 없이도 목표를 지켜서 “평소 운영”을 추천해요. 위험한 날에만 비용을 써서, 같은 돈으로 더 큰 효과를 내요.</p>
+      <p class="note">37일은 추가 조치 없이도 목표를 지켜서 “평소 운영”을 추천해요. 주차비 혜택은 가장 혼잡한 6일에만 골라졌어요. 매일 할인하면 수입 감소가 절감액보다 커서, <b>날짜를 골라 쓰는 것</b>이 핵심이에요. 참여율을 절반·두 배로 바꿔도 감소율은 66~73%로 유지돼요.</p>
     </div>
   </div>
 
@@ -155,9 +157,10 @@ footer{font-size:12px;color:var(--sub);text-align:center;padding:20px}
       <div><div class="wh">🚗 관람객</div><ul>
         <li>출발 전 <a href="#forecast">출차 예보</a>에서 혼잡 시간대 확인</li>
         <li>혼잡 시간대에는 <b>추천 출구</b>로 출차</li>
-        <li>30분만 늦게 나가도 대기가 크게 줄어요 (공원 산책·식음 이용)</li></ul></div>
+        <li>“30분 요금 동결” 날엔 여유 있게 출차 (공원 산책·식음 이용)</li></ul></div>
       <div><div class="wh">🏟️ 운영자 (KSPO)</div><ul>
         <li>위험일 D-3에 예매자 문자·SNS로 혼잡 예보 발송</li>
+        <li>가장 혼잡한 날에만 <b>종료 후 30분 주차요금 동결·할인</b></li>
         <li>당일 전광판·안내요원으로 출구별 <b>용량 비례 분산</b></li>
         <li>혼잡 출구 임시 차선, 출차 전 사전정산 안내</li>
         <li><a href="#sim">시뮬레이터</a>로 방안 효과를 미리 확인</li></ul></div>
@@ -195,9 +198,11 @@ footer{font-size:12px;color:var(--sub);text-align:center;padding:20px}
       <label>날짜</label><select id="simday"></select>
       <button id="optbtn" class="optbtn">🧮 이 날 모델 추천안 적용 (대기 3분 이하 · 최소 비용)</button><div class="note" id="optnote" style="margin-top:6px"></div>
       <label>빠른 선택</label><div id="presets"></div>
-      <label>시간 분산 <span id="shiftv"></span><div class="hint">공연 차량 중 늦게 출발하도록 유도하는 비율 (예: 공원 내 할인·이벤트)</div></label>
-      <input type="range" id="shift" min="0" max="50" step="5" value="0">
-      <label>늦추는 시간 <span id="sminv"></span></label><input type="range" id="smin" min="15" max="60" step="5" value="30">
+      <label>늦은 출차 주차비 혜택<div class="hint">지금은 10분당 600원이라 줄을 피해 기다리면 요금이 더 붙어요. 종료 후 30분 요금 동결·할인으로 늦은 출발을 유도해요.</div></label>
+      <select id="fee"><option value="0">없음</option><option value="1">종료 후 30분 요금 동결 (1,800원 상당)</option><option value="2">동결 + 2천 원 할인</option><option value="3">동결 + 4천 원 할인</option><option value="4">동결 + 6천 원 할인</option></select>
+      <div class="hint" id="feeinfo" style="margin-top:4px"></div>
+      <label>참여율 가정 <span id="psv"></span><div class="hint">혜택을 보고 30분 늦게 나가는 비율을 기본 가정의 몇 배로 볼지 (민감도 확인용)</div></label>
+      <input type="range" id="ps" min="50" max="200" step="25" value="100">
       <label>출구 분산</label><div class="chk"><input type="checkbox" id="cap"><span class="hint" style="font-size:13px;color:var(--ink)">출구 처리 능력에 맞춰 차량을 나눠 안내</span></div>
       <label>정산 속도 개선 <span id="speedv"></span><div class="hint">사전 정산·번호판 인식 등으로 출구 처리 한계 상향</div></label>
       <input type="range" id="speed" min="0" max="50" step="5" value="0">
@@ -237,28 +242,30 @@ footer{font-size:12px;color:var(--sub);text-align:center;padding:20px}
   <table><thead><tr><th>방안</th><th>총 대기 감소</th><th>혼잡 상위 15일 최대 대기</th><th>연간 손실 (저녁 공연 135일)</th></tr></thead><tbody>
     <tr><td>현재</td><td>–</td><td>16.9분</td><td>1.34억 원</td></tr>
     <tr><td>출구 분산 (용량 비례 안내)</td><td><span class="bar" style="width:27px"></span>−27%</td><td>10.2분</td><td>약 0.98억 원</td></tr>
-    <tr><td>시간 분산 20% (30분 늦춤)</td><td><span class="bar" style="width:53px"></span>−53%</td><td>9.9분</td><td>0.63억 원</td></tr>
+    <tr><td>늦은 출차 유도 20% (30분)</td><td><span class="bar" style="width:53px"></span>−53%</td><td>9.9분</td><td>0.63억 원</td></tr>
     <tr><td>임시 차선 +1 (가장 막히는 출구)</td><td><span class="bar" style="width:54px"></span>−54%</td><td>–</td><td>약 0.62억 원</td></tr>
     <tr><td>정산 속도 +20%</td><td><span class="bar" style="width:58px"></span>−58%</td><td>9.2분</td><td>약 0.56억 원</td></tr>
-    <tr><td><b>조합: 시간 분산 20% + 출구 분산</b></td><td><span class="bar" style="width:69px"></span><b>−69%</b></td><td><b>4.9분</b></td><td><b>0.41억 원</b></td></tr>
-    <tr><td>시간 분산 40%</td><td><span class="bar" style="width:82px"></span>−82%</td><td>4.7분</td><td>0.24억 원</td></tr>
+    <tr><td><b>조합: 늦은 출차 20% + 출구 분산</b></td><td><span class="bar" style="width:69px"></span><b>−69%</b></td><td><b>4.9분</b></td><td><b>0.41억 원</b></td></tr>
+    <tr><td>늦은 출차 유도 40%</td><td><span class="bar" style="width:82px"></span>−82%</td><td>4.7분</td><td>0.24억 원</td></tr>
   </tbody></table>
-  <p class="note">비용이 거의 들지 않는 안내(시간 분산 + 출구 분산)만으로 대기의 2/3 이상이 사라져요. 이 페이지의 예보와 추천 출구가 그 안내 수단이에요.</p>
+  <p class="note">늦은 출차 유도와 출구 분산 안내만으로 대기의 2/3 이상이 사라져요. 이 페이지의 예보·추천 출구·주차비 정책이 그 수단이에요.</p>
 
   <h2>날짜별 최적 대처 — 어떻게 고르나</h2>
   <ul>
-    <li><b>후보:</b> 시간 분산 0~40%(10% 단위) × 출구 분산 유/무 × 정산 속도 +0~30%(10% 단위) × 임시 차선(없음/북2/동2/남2) = 160가지 조합</li>
+    <li><b>후보:</b> 늦은 출차 주차비 혜택 5단계(없음 / 30분 동결 / 동결+2천 / +4천 / +6천 원) × 출구 분산 유/무 × 정산 속도 +0~30%(10% 단위) × 임시 차선(없음/북2/동2/남2) = 160가지 조합</li>
     <li><b>조건:</b> 출구 최대 대기 3분 이하 (못 지키면 대기가 가장 짧은 조합)</li>
     <li><b>목표:</b> 운영비 + 시간 손실(대기 차량·시간 × 2.4만 원) 최소. 차이가 5만 원 이내면 더 단순한 방안을 우선해요</li>
-    <li><b>운영비 가정 (하루):</b> 출구 분산 안내 15만 원(안내요원·전광판), 임시 차선 30만 원, 정산 속도 +10%당 10만 원(사전정산 안내·인력), 시간 분산은 늦게 나가는 차량 1대당 3천 원(공원 내 혜택)</li>
-    <li><b>결과 (2025년 74일):</b> 시간 손실 + 운영비 7,364만 원 → 1,997만 원(−73%), 대기 3분 이내인 날 41일 → 74일</li>
+    <li><b>주차비 혜택:</b> 올림픽공원 소형 주차요금 10분당 600원 기준으로, 종료 후 30분 동결 = 1,800원. 비용 = 늦게 나간 차량 수 × 혜택액(주차 수입 감소). 늦게 나가는 비율은 동결 10%, +2천 20%, +4천 30%, +6천 40%로 가정</li>
+    <li><b>운영비 가정 (하루):</b> 출구 분산 안내 15만 원(안내요원·전광판), 임시 차선 30만 원, 정산 속도 +10%당 10만 원(사전정산 안내·인력)</li>
+    <li><b>결과 (2025년 74일):</b> 시간 손실 + 운영비 7,364만 원 → 2,177만 원(−70%), 대기 3분 이내인 날 41일 → 74일. 37일은 평소 운영, 주차비 혜택은 6일에만 사용</li>
+    <li><b>민감도:</b> 참여율을 절반으로 보면 −66%(73일 달성), 두 배로 보면 −73%. 매일 일괄 할인(동결+2천 + 출구 분산)은 8,128만 원으로 현재보다 오히려 커요</li>
   </ul>
 
   <h2>한계와 가정</h2>
   <ul>
     <li>대기는 <b>출구 정산 게이트 앞</b>만 계산해요. 주차장 내부 이동·도로 정체는 빠져 있어 체감 대기(후기상 30~60분)보다 작게 나와요.</li>
     <li>2025년 8~12월 입출차 데이터는 API 장애로 일부만 수집돼 1~7월로 모델을 만들었어요.</li>
-    <li>방안 수치는 가정이에요: 시간 분산 = 공연 차량의 20%·40%를 30분 늦춤, 차선 추가 = 처리 한계 ×1.5, 시간 가치 = 차량 1대·1시간 2.4만 원(1.6명 × 1.5만 원).</li>
+    <li>방안 수치는 가정이에요: 주차비 혜택별 참여율(10~40%), 차선 추가 = 처리 한계 ×1.5, 시간 가치 = 차량 1대·1시간 2.4만 원(1.6명 × 1.5만 원). 주차요금은 공개 안내 기준이에요.</li>
     <li>2026 공연 중 러닝타임 미공개 공연은 2시간으로 가정했어요.</li>
     <li>운영비 단가는 공개 자료가 없어 가정한 값이에요. 기관의 실제 단가를 넣으면 추천이 바뀔 수 있어요.</li>
   </ul>
@@ -379,17 +386,29 @@ if (typeof module !== 'undefined') module.exports = { runOne, ensemble, analogs,
 
 // ===== 최적화: 날짜별 최적 대처 조합 탐색 =====
 // 운영비 가정 (하루 기준, 원)
-const COST = { capShare: 150000, lane: 300000, speedPer10: 100000, shiftPerCar: 3000 };
-const GRID = { shift: [0, .1, .2, .3, .4], cap: [false, true], speed: [0, .1, .2, .3], lane: [-1, 0, 1, 2] };
+const COST = { capShare: 150000, lane: 300000, speedPer10: 100000 };
+// 늦은 출차 주차비 혜택: 올림픽공원 소형 10분당 600원 → 종료 후 30분 동결 = 1,800원
+// part = 늦게(30분) 나가는 공연 차량 비율 (가정)
+const FEE = [
+  { label: '없음', short: '', benefit: 0, part: 0 },
+  { label: '종료 후 30분 요금 동결', short: '주차비 30분 동결', benefit: 1800, part: .10 },
+  { label: '동결 + 2천 원 할인', short: '주차비 동결+2천 원', benefit: 3800, part: .20 },
+  { label: '동결 + 4천 원 할인', short: '주차비 동결+4천 원', benefit: 5800, part: .30 },
+  { label: '동결 + 6천 원 할인', short: '주차비 동결+6천 원', benefit: 7800, part: .40 },
+];
+let PARTSCALE = 1;   // 참여율 민감도 (0.5 = 절반, 2 = 두 배)
+const feeShift = f => Math.min(FEE[f].part * PARTSCALE, 0.9);
+const GRID = { fee: [0, 1, 2, 3, 4], cap: [false, true], speed: [0, .1, .2, .3], lane: [-1, 0, 1, 2] };
 function planCost(p, o) {
   const N = p.Nk[0] + p.Nk[1] + p.Nk[2];
-  return (o.capShare ? COST.capShare : 0) + (o.lane >= 0 ? COST.lane : 0) + COST.speedPer10 * Math.round((o.speed || 0) * 10) + (o.shift || 0) * N * COST.shiftPerCar;
+  const feeCost = o.fee ? FEE[o.fee].benefit * N * (o.shift || 0) : 0;   // 늦게 나간 차량에만 혜택 = 주차 수입 감소
+  return (o.capShare ? COST.capShare : 0) + (o.lane >= 0 ? COST.lane : 0) + COST.speedPer10 * Math.round((o.speed || 0) * 10) + feeCost;
 }
 // 목표: 출구 최대 대기 ≤ target분을 지키면서 (운영비 + 시간손실) 최소
 function optimize(p, target) {
   const base = runOne(p, {}), res = [];
-  for (const shift of GRID.shift) for (const cap of GRID.cap) for (const speed of GRID.speed) for (const lane of GRID.lane) {
-    const o = { shift, shiftMin: 30, capShare: cap, speed, lane }, r = runOne(p, o);
+  for (const fee of GRID.fee) for (const cap of GRID.cap) for (const speed of GRID.speed) for (const lane of GRID.lane) {
+    const o = { fee, shift: feeShift(fee), shiftMin: 30, capShare: cap, speed, lane }, r = runOne(p, o);
     const cost = planCost(p, o), loss = r.vehMin / 60 * VOT;
     res.push({ o, maxWait: r.maxWait, vehMin: r.vehMin, cost, loss, total: cost + loss, ok: r.maxWait <= target + 1e-9 });
   }
@@ -402,7 +421,7 @@ function optimize(p, target) {
   const baseLoss = base.vehMin / 60 * VOT;
   return { base: { maxWait: base.maxWait, vehMin: base.vehMin, loss: baseLoss, total: baseLoss, ok: base.maxWait <= target }, best: pool[0], top: pool.slice(0, 3), feasible: feas.length > 0, n: res.length };
 }
-if (typeof module !== 'undefined') Object.assign(module.exports, { optimize, planCost });
+if (typeof module !== 'undefined') Object.assign(module.exports, { optimize, planCost, FEE, feeShift, setScale: v => { PARTSCALE = v; } });
 </script>
 <script>// ===== 화면 =====
 const DCOL = ['#2f6fdf', '#e07b1a', '#16956b'];
@@ -481,7 +500,7 @@ window.addEventListener('hashchange', () => showTab());
 const pct = v => Math.round(v * 100);
 function planParts(o) {
   const a = [];
-  if (o.shift) a.push(`시간 분산 ${pct(o.shift)}%`);
+  if (o.fee) a.push(FEE[o.fee].short);
   if (o.capShare) a.push('출구 분산');
   if (o.speed) a.push(`정산 속도 +${pct(o.speed)}%`);
   if (o.lane >= 0) a.push(`${DOORS[o.lane]} 임시 차선`);
@@ -503,7 +522,7 @@ function renderOverview() {
   const obs = d.obs5[0].map((_, k) => [k * 5 + 2.5, d.obs5[0][k] + d.obs5[1][k] + d.obs5[2][k]]);
   lineChart($('#ovchart1'), { t0: 180, t1: 440, unit: '대', yTitle: '5분당 출차 대수 · 2025.4.5', mark: [[240, '공연 예정 종료 20:00']],
     series: [{ name: '실제 출차 (실측)', color: '#e0442b', pts: obs, area: true, w: 2.2 }, { name: '평소 저녁 수준 (약 45대)', color: '#64748b', pts: [[180, 45], [440, 45]], dash: '6 4', w: 1.5 }] });
-  const SC = [['출구 분산', 27], ['시간 분산 20%', 53], ['임시 차선 +1', 54], ['정산 속도 +20%', 58], ['조합 (시간 20% + 출구)', 69, 1], ['시간 분산 40%', 82]];
+  const SC = [['출구 분산', 27], ['늦은 출차 20%', 53], ['임시 차선 +1', 54], ['정산 속도 +20%', 58], ['조합 (늦은 출차 20% + 출구)', 69, 1], ['늦은 출차 40%', 82]];
   $('#ovbars').innerHTML = '<div style="font-size:12.5px;color:var(--sub);margin-bottom:4px">대기 시간 감소율 (2025년 1~7월 74일 합계)</div>' +
     SC.map(([n, v, h]) => `<div class="brow ${h ? 'hl' : ''}"><div>${n}</div><div class="bt"><span style="width:${v}%"></span></div><div class="pc">−${v}%</div></div>`).join('');
   lineChart($('#ovchart2'), { t0: 300, t1: 420, unit: '대', yTitle: '4/5 출구 앞 대기 줄 (대, 모델)', h: 230,
@@ -572,12 +591,12 @@ function renderForecast() {
   let acts = [];
   if (parts.length) acts.push(`D-3: 예매자 문자·SNS로 혼잡 예보와 아래 안내 문구 발송`);
   if (bo.capShare) acts.push(`당일: 전광판·안내요원으로 출구별 처리 능력에 맞춰 분산 안내 (혼잡 시간대 ${recDoor !== null ? DOORS[recDoor] : '여유 출구'} 유도)`);
-  if (bo.shift) acts.push(`공원 내 식음·굿즈 혜택으로 공연 차량의 ${pct(bo.shift)}%(약 ${Math.round(N * bo.shift)}대)가 30분 늦게 출발하도록 유도`);
+  if (bo.fee) acts.push(`주차 정책: <b>${FEE[bo.fee].label}</b> → 공연 차량 약 ${Math.round(N * bo.shift)}대(${pct(bo.shift)}% 가정)가 30분 늦게 출발, 주차 수입 감소 약 ${Math.round(FEE[bo.fee].benefit * N * bo.shift / 1e4)}만 원`);
   if (bo.speed) acts.push(`사전정산 안내·정산 인력 보강으로 출구 처리 속도 +${pct(bo.speed)}%`);
   if (bo.lane >= 0) acts.push(`${DOORS[bo.lane]} 임시 차선 1개 추가 운영 (혼잡 시작 전 설치)`);
   if (!parts.length) acts.push('평소대로 운영해도 목표 대기 이내예요. 주차 안내 문자로 혼잡 정보만 공유');
   if (gap !== null && gap <= 20) acts.push(`공연장 간 예정 종료시각 차이가 ${gap}분뿐이에요 → 공연사와 종료시각 엇갈림(30분 이상) 협의 권장`);
-  const msg = E.maxWait >= 1 ? `[올림픽공원 주차 안내] ${dateLabel(f.date)} ${venuesTxt} 공연 후 ${busy.length ? fmtT(busy[0]) + '~' + fmtT(busy[busy.length - 1] + 1) : fmtT(pk) + ' 전후'}에 출구 혼잡이 예상됩니다. ${recDoor !== null ? `이 시간에는 ${DOORS[recDoor]} 이용을 권장하며, ` : ''}${clear !== null ? fmtT(clear) + ' 이후' : '조금 늦게'} 출차하시면 대기가 거의 없습니다.`
+  const msg = E.maxWait >= 1 ? `[올림픽공원 주차 안내] ${dateLabel(f.date)} ${venuesTxt} 공연 후 ${busy.length ? fmtT(busy[0]) + '~' + fmtT(busy[busy.length - 1] + 1) : fmtT(pk) + ' 전후'}에 출구 혼잡이 예상됩니다. ${recDoor !== null ? `이 시간에는 ${DOORS[recDoor]} 이용을 권장하며, ` : ''}${clear !== null ? fmtT(clear) + ' 이후' : '조금 늦게'} 출차하시면 대기가 거의 없습니다.${bo.fee ? (bo.fee === 1 ? ' 이날은 공연 종료 후 30분간 주차요금이 추가되지 않으니 여유 있게 출차하세요.' : ` 이날은 공연 종료 30분 이후 출차 시 주차요금 ${(FEE[bo.fee].benefit - 1800).toLocaleString()}원 추가 할인과 30분 요금 동결 혜택이 있습니다.`) : ''}`
     : `[올림픽공원 주차 안내] ${dateLabel(f.date)} ${venuesTxt} 공연 후 출구 혼잡은 크지 않을 것으로 예상됩니다. 안전 운전하세요.`;
   $('#fcact').innerHTML = `<h3>🏟️ 이 날 운영자 할 일 <span class="badge ${cls}">${lab}</span></h3><ul>${acts.map(a => `<li>${a}</li>`).join('')}</ul>
     <div class="msg"><div class="ml">관람객 안내 문구 (문자·전광판용)</div><span id="msgtxt">${msg}</span><button id="copymsg">복사</button></div>`;
@@ -604,11 +623,11 @@ document.addEventListener('click', ev => { const b = ev.target.closest('[data-mo
 // ---------- ② 운영 시뮬레이터 ----------
 let simSel = 'd' + DATA.days.findIndex(d => d.date === '2025-04-05'), pendingPlan = null;
 const PRESETS = {
-  '현재 그대로': { shift: 0, smin: 30, cap: false, speed: 0, lane: 'none' },
-  '시간 분산 20%': { shift: 20, smin: 30, cap: false, speed: 0, lane: 'none' },
-  '출구 분산': { shift: 0, smin: 30, cap: true, speed: 0, lane: 'none' },
-  '정산 속도 +20%': { shift: 0, smin: 30, cap: false, speed: 20, lane: 'none' },
-  '조합 (시간 20% + 출구)': { shift: 20, smin: 30, cap: true, speed: 0, lane: 'none' },
+  '현재 그대로': { fee: 0, cap: false, speed: 0, lane: 'none' },
+  '주차비 동결+2천': { fee: 2, cap: false, speed: 0, lane: 'none' },
+  '출구 분산': { fee: 0, cap: true, speed: 0, lane: 'none' },
+  '정산 속도 +20%': { fee: 0, cap: false, speed: 20, lane: 'none' },
+  '조합 (주차비 동결+2천 + 출구)': { fee: 2, cap: true, speed: 0, lane: 'none' },
 };
 function buildSimControls() {
   const sel = $('#simday');
@@ -616,23 +635,28 @@ function buildSimControls() {
     <optgroup label="2025 실측 (모델 검증일)">${DATA.days.map((d, i) => `<option value="d${i}">${d.date.slice(5).replace('-', '/')} ${[...new Set(d.venues.map(v => SHORT[v]))].join('+')}</option>`).join('')}</optgroup>`;
   $('#presets').innerHTML = Object.keys(PRESETS).map(k => `<button data-p="${k}">${k}</button>`).join('');
   $('#presets').querySelectorAll('button').forEach(b => b.onclick = () => { const p = PRESETS[b.dataset.p];
-    $('#shift').value = p.shift; $('#smin').value = p.smin; $('#cap').checked = p.cap; $('#speed').value = p.speed; $('#lane').value = p.lane; renderSim(); });
+    $('#fee').value = p.fee; $('#cap').checked = p.cap; $('#speed').value = p.speed; $('#lane').value = p.lane; renderSim(); });
   $('#optbtn').onclick = () => { applyPlan(simOptimize().best.o); renderSim(); };
-  ['#simday', '#shift', '#smin', '#cap', '#speed', '#lane'].forEach(s => $(s).addEventListener('input', () => { if (s === '#simday') simSel = $(s).value; renderSim(); }));
+  ['#simday', '#fee', '#ps', '#cap', '#speed', '#lane'].forEach(s => $(s).addEventListener('input', () => {
+    if (s === '#simday') simSel = $(s).value;
+    if (s === '#ps') { PARTSCALE = +$('#ps').value / 100; for (const k in OPTCACHE) delete OPTCACHE[k]; }
+    renderSim(); }));
 }
 function simParams() { const isF = simSel[0] === 'f', idx = +simSel.slice(1); return isF ? [FC[idx].an[FC[idx].mid.rep], 'f' + idx] : [DATA.days[idx], 'd' + idx]; }
 function simOptimize() { const [p, k] = simParams(); return optFor(k + 'mid', p, 3); }
-function applyPlan(o) { $('#shift').value = pct(o.shift); $('#smin').value = 30; $('#cap').checked = !!o.capShare; $('#speed').value = pct(o.speed); $('#lane').value = o.lane >= 0 ? String(o.lane) : 'none'; }
+function applyPlan(o) { $('#fee').value = String(o.fee || 0); $('#cap').checked = !!o.capShare; $('#speed').value = pct(o.speed); $('#lane').value = o.lane >= 0 ? String(o.lane) : 'none'; }
 function simOpts() {
   const lane = $('#lane').value;
-  return { shift: +$('#shift').value / 100, shiftMin: +$('#smin').value, capShare: $('#cap').checked, speed: +$('#speed').value / 100,
+  const fee = +$('#fee').value;
+  return { fee, shift: feeShift(fee), shiftMin: 30, capShare: $('#cap').checked, speed: +$('#speed').value / 100,
     lane: lane === 'none' ? -1 : lane === 'auto' ? 'auto' : +lane };
 }
 function renderSim() {
   $('#simday').value = simSel;
   if (pendingPlan) { applyPlan(pendingPlan); pendingPlan = null; }
   { const OP = simOptimize(), ps = planParts(OP.best.o); $('#optnote').innerHTML = `이 날 추천안: <b>${ps.join(' + ') || '평소 운영 유지'}</b> · 최대 대기 ${f1(OP.base.maxWait)} → ${f1(OP.best.maxWait)}분 · 운영비 ${Math.round(OP.best.cost / 1e4)}만 원`; }
-  $('#shiftv').textContent = $('#shift').value + '%'; $('#sminv').textContent = $('#smin').value + '분'; $('#speedv').textContent = '+' + $('#speed').value + '%';
+  $('#psv').textContent = '×' + (+$('#ps').value / 100);
+  { const fe = +$('#fee').value; $('#feeinfo').innerHTML = fe ? `→ 공연 차량의 <b>${pct(feeShift(fe))}%</b>가 30분 늦게 출발한다고 가정 · 늦게 나간 차 1대당 ${FEE[fe].benefit.toLocaleString()}원 혜택` : ''; } $('#speedv').textContent = '+' + $('#speed').value + '%';
   const isF = simSel[0] === 'f', idx = +simSel.slice(1);
   const params = isF ? FC[idx].an : dayParams(DATA.days[idx]);
   const o = simOpts(), rep = isF ? FC[idx].mid.rep : 0, B = ensemble(params, {}, .5, rep), S = ensemble(params, o, .5, rep);
